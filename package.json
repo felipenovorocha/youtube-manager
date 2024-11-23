@@ -14,6 +14,7 @@
   "dependencies": {
     "@tsconfig/recommended": "^1.0.7",
     "@types/node": "^20.14.9",
+    "axios": "^1.7.7",
     "fs": "^0.0.1-security",
     "nodemon": "^3.1.7",
     "tsc": "^2.0.4",
