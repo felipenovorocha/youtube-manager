@@ -1,16 +1,30 @@
-import axios, {
-  AxiosResponse,
-  AxiosRequestConfig,
-  RawAxiosRequestHeaders,
-} from "axios";
+import axios from "axios";
 import { googleApi } from "../constantes";
 
-const formatarQueryParams = () => {};
+export const formatarQueryParams = (params: Object[]): string => {
+  let queryParams!: string;
+
+  params.forEach((param) => {
+    if (params.indexOf(param) != params.length - 1) {
+      queryParams += `${param}&`;
+    }
+  });
+  return queryParams;
+};
+
+export const formatarUri = (params: Object[]): string => {
+  let uri: string = `${googleApi.BASE_URL}/${googleApi.scopes.youtube}/${
+    googleApi.VERSION
+  }?${formatarQueryParams(params)}`;
+
+  return uri;
+};
 
 const client = axios.create({
-  baseURL: `${googleApi.BASE_URL}/${googleApi.scopes.youtube}/${googleApi.VERSION}`,
-});
+    baseURL:formatarUri([{ key: googleApi.KEY }]),
+   });
 
+   
 // (async () => {
 //   const config: AxiosRequestConfig = {
 //     headers: {

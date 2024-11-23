@@ -6,6 +6,7 @@ export const youtube = {
 export const googleApi = {
   BASE_URL: "https://www.googleapis.com/",
   VERSION: "v3",
+  KEY:"AIzaSyB3Vs3p1PPIKWqqdPlO1CD-LI1acpGBA_U",
   scopes: {
     youtube: "youtube",
   },
