@@ -4,7 +4,9 @@
   "description": "script de download automático de videos do youtube",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node src/index.ts",
+    "start": "nodemon src/index.ts",
+    "build": "tsc",
+    "serve": "node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -13,10 +15,12 @@
     "@tsconfig/recommended": "^1.0.7",
     "@types/node": "^20.14.9",
     "fs": "^0.0.1-security",
+    "nodemon": "^3.1.7",
     "tsc": "^2.0.4",
     "ytdl-core": "^4.11.5"
   },
   "devDependencies": {
+    "express": "^4.21.1",
     "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.2",

@@ -1,28 +1,19 @@
-import ytdl from "ytdl-core";
 import * as fs from "fs";
-import * as cd from "child_process";
 import { youtube } from "./constantes";
-import { url } from "inspector";
-import { downloadVideo, getVideoInfo } from "./video.service";
+import { downloadVideo, getVideoInfo } from "./services/video.service";
+import { criarDiretorioOutput } from "./services/generic.service";
 
+import express, { Request, Response } from "express";
+import { json } from "stream/consumers";
 
+const app = express();
+const port = 3000;
 
-const criarDiretorioOutput = () => {
-  cd.execSync(`mkdir ${youtube.DIRETORIO_OUTPUT}`, { cwd: ".." });
-};
+app.get("/", (req: Request, res: Response) => {
+  let title;
+  getVideoInfo().then((videoInfo) => res.send(videoInfo.videoDetails));
+});
 
-
-
-const init = () => {
-  if (!fs.existsSync(`../${youtube.DIRETORIO_OUTPUT}`)) {
-    console.log("criando diretorio... ");
-    criarDiretorioOutput();
-  }
-
-  getVideoInfo().then((videoInfo) => {
-    let title = videoInfo.videoDetails.title;
-    console.log(`baixando o video ${title}`), downloadVideo(title);
-  });
-};
-
-init();
+app.listen(port, () => {
+  console.log(`Server rodando na porta: ${port}`);
+});
