@@ -22,12 +22,17 @@ export const getVideoInfo = (id: string) => {
   ytdl.getBasicInfo(formatedDownloadUrl).then((videoInfo) => {
     const videoInfoDB = new VideoInfoModel();
 
+    videoInfoDB.createdAt = new Date();
     videoInfoDB.title = videoInfo.videoDetails.title;
     videoInfoDB.descricao = videoInfo.videoDetails.description;
-    videoInfoDB.urlCanal = videoInfo.videoDetails.ownerChannelName;
+    videoInfoDB.nomeCanal = videoInfo.videoDetails.ownerChannelName;
     videoInfoDB.id = id;
 
     videoInfoDB.save();
+
+    console.log(
+      `informações salvas do video ${videoInfoDB.title} salvas com sucesso`
+    );
   });
   return ytdl.getBasicInfo(formatedDownloadUrl);
 };

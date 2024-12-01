@@ -1,3 +1,4 @@
+import { timeStamp } from "console";
 import mongoose, { Collection } from "mongoose";
 
 export class VideoInfo {
@@ -7,7 +8,8 @@ export class VideoInfo {
 
 const VideoInfoSchema = new mongoose.Schema({
   title: { type: String },
-  urlCanal: { type: String },
+  nomeCanal: { type: String },
+  createdAt: Date,
   descricao: { type: String },
   id: { type: String },
 });
