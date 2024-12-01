@@ -1,3 +1,4 @@
+import { connectToDB } from "./configs/mongo.config";
 import { getVideoInfo } from "./services/video.service";
 
 import express, { Request, Response } from "express";
@@ -5,11 +6,10 @@ import express, { Request, Response } from "express";
 const app = express();
 const port = 3000;
 
+connectToDB()
+
 app.get("/video-info/:videoId", (req: Request, res: Response) => {
   let videoId = req.params["videoId"];
-
-  // console.log(videoUrl)
-
   getVideoInfo(videoId).then((videoInfo) => res.send(videoInfo.videoDetails));
 });
 
