@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/index.ts",
-    "build": "npm install typescript; tsc",
+    "build": "tsc",
     "serve": "node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,13 +14,11 @@
   "dependencies": {
     "@tsconfig/recommended": "^1.0.7",
     "@types/node": "^20.14.9",
-    "typescript": "^5.7.2",
     "axios": "^1.7.7",
     "dotenv": "^16.4.5",
     "fs": "^0.0.1-security",
     "mongoose": "^8.8.3",
     "nodemon": "^3.1.7",
-    "tsc": "^2.0.4",
     "ts-node": "^10.9.2",
     "ytdl-core": "^4.11.5"
   },
