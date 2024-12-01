@@ -7,8 +7,10 @@ const video_service_1 = require("./services/video.service");
 const express_1 = __importDefault(require("express"));
 const app = (0, express_1.default)();
 const port = 3000;
-app.get("/", (req, res) => {
-    (0, video_service_1.getVideoInfo)().then((videoInfo) => res.send(videoInfo.videoDetails));
+app.get("/video-info/:videoId", (req, res) => {
+    let videoId = req.params["videoId"];
+    // console.log(videoUrl)
+    (0, video_service_1.getVideoInfo)(videoId).then((videoInfo) => res.send(videoInfo.videoDetails));
 });
 app.listen(port, () => {
     console.log(`Server rodando na porta: ${port}`);
