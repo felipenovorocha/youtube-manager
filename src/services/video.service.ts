@@ -3,10 +3,7 @@ import ytdl from "ytdl-core";
 import { youtube } from "../constantes";
 
 let videoIds = ["2i_DLZDe4DA"];
-
 let downloadUrl = `${youtube.BASE_URL}=`;
-
-export const construirDownloadUrl =  (videoId: string) => {};
 
 export const downloadVideo = (title: string) => {
   //   let tituloTratado = title.replace(" ", "-").replace("\g:","").toLowerCase();
@@ -19,7 +16,8 @@ export const downloadVideo = (title: string) => {
   console.log(`Download do video ${title} realizado com sucesso`);
 };
 
-export const getVideoInfo = () => {
-  console.log(`recuperando informações do video: ${downloadUrl}`);
-  return ytdl.getBasicInfo(downloadUrl);
+export const getVideoInfo = (id: string) => {
+  let formatedDownloadUrl = `${downloadUrl}${id}`;
+  console.log(`recuperando informações do video: ${formatedDownloadUrl}`);
+  return ytdl.getBasicInfo(formatedDownloadUrl);
 };
