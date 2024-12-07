@@ -13,7 +13,7 @@ export const downloadVideo = (videoId: string): videoInfo => {
 
     ytdl(`${youtube.BASE_URL}=${videoId}`).pipe(
       fs.createWriteStream(
-        `..\\${youtube.DIRETORIO_OUTPUT}\\video_${titulo}.mp4`
+        `${youtube.DIRETORIO_OUTPUT}\\${titulo}.${youtube.VIDEO_FORMAT}`
       )
     );
     returnedVideoInfo = videoInfo;

@@ -1,4 +1,3 @@
-import { downloadFromInfo } from "ytdl-core";
 import { downloadVideo, getVideoInfo } from "./services/video.service";
 
 import express, { Request, Response } from "express";
