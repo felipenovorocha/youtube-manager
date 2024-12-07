@@ -1,25 +1,26 @@
 import * as fs from "fs";
-import ytdl from "ytdl-core";
+import ytdl, { videoInfo } from "ytdl-core";
 import { youtube } from "../constantes";
 
-let videoIds = ["2i_DLZDe4DA"];
+export const downloadVideo = (videoId: string)  => {
+  const downloadUrl = `${youtube.BASE_URL}=${videoId}`;
 
-let downloadUrl = `${youtube.BASE_URL}=`;
+  getVideoInfo(downloadUrl).then((videoInfo: videoInfo) => {
+    let titulo = videoInfo.videoDetails.title;
 
-export const construirDownloadUrl =  (videoId: string) => {};
+    ytdl(`${youtube.BASE_URL}=${videoId}`).pipe(
+      fs.createWriteStream(
+        `..\\${youtube.DIRETORIO_OUTPUT}\\video_${titulo}.mp4`
+      )
+    );
+    console.log(`Download do video ${titulo} realizado com sucesso`);
+  });
 
-export const downloadVideo = (title: string) => {
-  //   let tituloTratado = title.replace(" ", "-").replace("\g:","").toLowerCase();
 
-  ytdl(downloadUrl).pipe(
-    fs.createWriteStream(
-      `..\\${youtube.DIRETORIO_OUTPUT}\\video_${videoIds[0]}.mp4`
-    )
-  );
-  console.log(`Download do video ${title} realizado com sucesso`);
+
 };
 
-export const getVideoInfo = () => {
-  console.log(`recuperando informações do video: ${downloadUrl}`);
+export const getVideoInfo = (downloadUrl: string) => {
+  console.log(`Buscando informações do video: ${downloadUrl}`);
   return ytdl.getBasicInfo(downloadUrl);
 };
