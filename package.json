@@ -17,6 +17,8 @@
     "axios": "^1.7.7",
     "fs": "^0.0.1-security",
     "nodemon": "^3.1.7",
+    "pre-commit": "^1.2.2",
+    "rimraff": "^0.0.1-security",
     "tsc": "^2.0.4",
     "ytdl-core": "^4.11.5"
   },
