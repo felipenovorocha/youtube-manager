@@ -2,9 +2,12 @@ import * as fs from "fs";
 import ytdl, { videoInfo } from "ytdl-core";
 import { youtube } from "../constantes";
 
-export const downloadVideo = (videoId: string)  => {
+export const downloadVideo = (videoId: string): videoInfo => {
+  
   const downloadUrl = `${youtube.BASE_URL}=${videoId}`;
-
+    let returnedVideoInfo!: videoInfo;
+  
+  
   getVideoInfo(downloadUrl).then((videoInfo: videoInfo) => {
     let titulo = videoInfo.videoDetails.title;
 
@@ -13,11 +16,10 @@ export const downloadVideo = (videoId: string)  => {
         `..\\${youtube.DIRETORIO_OUTPUT}\\video_${titulo}.mp4`
       )
     );
-    console.log(`Download do video ${titulo} realizado com sucesso`);
+    returnedVideoInfo = videoInfo;
   });
-
-
-
+  
+  return returnedVideoInfo;
 };
 
 export const getVideoInfo = (downloadUrl: string) => {
