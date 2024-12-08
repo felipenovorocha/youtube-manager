@@ -1,4 +1,4 @@
-# :video_camera Youtube Manager
+# :video_camera:s Youtube Manager
 
 ## Ficha Técnica
 
